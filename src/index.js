@@ -1,3 +1,4 @@
+exports.blockgraph = require('./blockgraph');
 exports.chains = require('./chains');
 exports.components = require('./components');
 exports.degree = require('./degree');

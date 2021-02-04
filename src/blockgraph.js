@@ -1,20 +1,25 @@
 const DiGraph = require('./DiGraph');
 
 
+// Converts components into "block" nodes.
 function blockgraph(x, comps) {
-  var a = new DiGraph(comps.length);
-  var blocks = new Array(x.order()).fill(0);
-  for (var c=0, C=comps.length; c<C; c++) {
-    for (var i of comps[c])
-      blocks[i] = c;
+  var X = x.order();
+  var C = comps.length;
+  var b = blockIds(X, comps);
+  var a = new DiGraph(C);
+  for (var i=0; i<X; i++) {
+    a.addNode(b[i]);
+    for (var j of x.links[i])
+      if (b[i] !== b[j]) a.addLink(b[i], b[j]);
   }
-  for (var i=0, I=x.order(); i<I; i++) {
-    var i1 = blocks[i];
-    a.addNode(i1);
-    for (var j of x.links[i]) {
-      var j1 = blocks[j];
-      if (i1 !== j1) a.addLink(i1, j1);
-    }
+  return a;
+}
+
+function blockIds(X, comps) {
+  var a = new Array(X).fill(0);
+  for (var c=0; c<C; c++) {
+    for (var i of comps[c])
+      a[i] = c;
   }
   return a;
 }
