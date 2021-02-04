@@ -1,3 +1,4 @@
+// Traverses nodes in depth-first manner, listing on exit.
 function dfsEnd(x, i=0, nodes=[], visited=null) {
   visited = visited || new Array(x.order()).fill(false);
   visited[i] = true;

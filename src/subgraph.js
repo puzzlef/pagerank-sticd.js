@@ -1,6 +1,7 @@
 const DiGraph = require('./DiGraph');
 
 
+// Keeps only specified nodes.
 function subgraph(x, nodes=[]) {
   var a = new DiGraph(x.order());
   for (var i of nodes) {

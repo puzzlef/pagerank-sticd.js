@@ -2,6 +2,7 @@ const readFile = require('./_readFile');
 const DiGraph = require('./DiGraph');
 
 
+// Reads matrix market file as graph.
 function readMtx(pth) {
   var ls = readFile(pth).split('\n');
   var [, order, size] = ls[1].split(' ').map(parseFloat);

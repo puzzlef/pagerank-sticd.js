@@ -1,6 +1,7 @@
 const DiGraph = require('./DiGraph');
 
 
+// Reverses all links.
 function transpose(x) {
   var a = new DiGraph(x.order());
   for (var i=0, I=x.links.length; i<I; i++) {

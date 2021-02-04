@@ -1,16 +1,18 @@
 function pageRank(x, o) {
-  var order = x.order();
+  var n = x.order();
   var {damping, convergence} = o;
-  var ranks = new Array(order).fill(0).map(() => 1/order);
+  var ranks = new Array(n).fill(0).map(() => 1/n);
   do {
-    var r = new Array(order).fill((1-damping)/order);
-    for (var i=0; i<order; i++) {
+    var r = new Array(n).fill((1-damping)/n);
+    for (var i=0; i<n; i++) {
       var d = x.links[i].length;
-      for (j of x.links[i])
+      if (d > 0) for (j of x.links[i])
         r[j] += damping*ranks[i]/d;
+      else for (var j=0; j<n; j++)
+        r[j] += damping*ranks[i]/n;
     }
     var e = 0;
-    for (var i=0; i<order; i++)
+    for (var i=0; i<n; i++)
       e += Math.abs(ranks[i] - r[i]);
     ranks = r;
   } while (e > convergence);
