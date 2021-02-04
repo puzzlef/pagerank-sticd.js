@@ -1,0 +1,28 @@
+{
+  "name": "pagerank-sticd",
+  "version": "0.0.1",
+  "description": "STIC-D: Algorithmic techniques for efficient Parallel Pagerank computation on Real-world graphs.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodef/pagerank-sticd.git"
+  },
+  "keywords": [
+    "pagerank",
+    "page",
+    "rank",
+    "sticd",
+    "graph",
+    "algorithm"
+  ],
+  "author": "wolfram77@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nodef/pagerank-sticd/issues"
+  },
+  "homepage": "https://github.com/nodef/pagerank-sticd#readme"
+}
