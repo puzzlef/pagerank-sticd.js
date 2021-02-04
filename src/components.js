@@ -9,7 +9,7 @@ function components(x) {
   // original dfs
   var visited = new Array(x.order()).fill(false);
   for (var i=0, I=x.order(); i<I; i++)
-    dfsEnd(x, i, nodes, visited);
+    if (!visited[i]) dfsEnd(x, i, nodes, visited);
   // transpose dfs
   var y = transpose(x);
   visited.fill(false);

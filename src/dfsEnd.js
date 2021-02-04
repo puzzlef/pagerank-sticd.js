@@ -1,4 +1,4 @@
-function dfsEnd(x, i, nodes=[], visited=null) {
+function dfsEnd(x, i=0, nodes=[], visited=null) {
   visited = visited || new Array(x.order()).fill(false);
   visited[i] = true;
   for (var j of x.links[i])

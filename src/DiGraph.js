@@ -1,16 +1,21 @@
 class DiGraph {
   constructor(n) {
-    this.links = new Array(n).fill(null);
+    this.nodes = new Array(n).fill(false);
+    this.links = new Array(n).fill(null).map(() => []);
   }
 
   order() {
-    return this.links.length;
+    return this.nodes.length;
+  }
+
+  addNode(i) {
+    this.nodes[i] = true;
   }
 
   addLink(i, j) {
-    var l = this.links[i]||[];
+    var l = this.links[i];
     if (!l.includes(j)) l.push(j);
-    this.links[i] = l;
+    this.nodes[i] = this.nodes[j] = true;
   }
 }
 module.exports = DiGraph;
