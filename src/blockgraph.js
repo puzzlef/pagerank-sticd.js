@@ -16,6 +16,7 @@ function blockgraph(x, comps) {
 }
 
 function blockIds(X, comps) {
+  var C = comps.length;
   var a = new Array(X).fill(0);
   for (var c=0; c<C; c++) {
     for (var i of comps[c])

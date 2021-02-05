@@ -5,7 +5,7 @@ const DiGraph = require('./DiGraph');
 function subgraph(x, nodes=[]) {
   var a = new DiGraph(0);
   a.nodes = x.nodes.map((_, i) => nodes.includes(i));
-  a.links = x.links;
+  a.links = x.links.map((_, i) => nodes.includes(i)? x.links[i] : []);
   // for (var i of nodes) {
   //   a.addNode(i);
   //   for (var j of x.links[i])
