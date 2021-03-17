@@ -1,6 +1,6 @@
 {
   "name": "pagerank-sticd",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "STIC-D: Algorithmic techniques for efficient Parallel Pagerank computation on Real-world graphs.",
   "private": true,
   "main": "index.js",
