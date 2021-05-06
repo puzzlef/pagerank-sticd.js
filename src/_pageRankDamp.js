@@ -6,13 +6,16 @@ const OPTIONS = {
 };
 
 
-function pageRank(x, o, ranks=null, done=null) {
+function pageRankDamp(x, o, ranks=null, done=null) {
   var n = x.order();
   var {damping, convergence} = Object.assign({}, OPTIONS, o);
   var all = [...new Array(n).keys()];
   var ranks = ranks || new Array(n).fill(0).map(() => 1/n);
   var done = done || new Array(n).fill(false);
+  var rounds = Math.log(convergence)/Math.log(damping);
+  var converged = false;
   for (var k=0;; k++) {
+    var _damping = converged? damping : Math.min(damping, damping*Math.exp((k-rounds/2)/(rounds/2)));
     var r = new Array(n).fill((1-damping)/n);
     for (var i=0; i<n; i++) {
       if (!x.nodes[i]) continue;
@@ -25,9 +28,10 @@ function pageRank(x, o, ranks=null, done=null) {
     for (var i=0; i<n; i++)
       if (!done[i]) e += Math.abs(ranks[i] - r[i]);
     ranks = r.map((r, i) => done[i]? ranks[i] : r);
-    if (e < convergence) break;
+    if (e < convergence) converged = true;
+    if (e < convergence && _damping == damping) break;
   }
   console.log('Rounds', k);
   return ranks;
 }
-module.exports = pageRank;
+module.exports = pageRankDamp;

@@ -8,7 +8,7 @@ function main(pth) {
   var g = readMtx(pth);
   var ranks = pageRank(g);
   console.log(ranks);
-  var ranks = pageRankSticd(g);
-  console.log(ranks);
+  // var ranks = pageRankSticd(g);
+  // console.log(ranks);
 }
 main(A[2]);
