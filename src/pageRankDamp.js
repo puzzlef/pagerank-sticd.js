@@ -16,13 +16,13 @@ function pageRankDamp(x, o, ranks=null, done=null) {
   var converged = false;
   for (var k=0;; k++) {
     var _damping = converged? damping : Math.min(damping, damping*Math.exp((k-rounds/2)/(rounds/2)));
-    var r = new Array(n).fill((1-damping)/n);
+    var r = new Array(n).fill((1-_damping)/n);
     for (var i=0; i<n; i++) {
       if (!x.nodes[i]) continue;
       var l = degree(x, i) > 0? x.links[i] : all;
       var d = l.length;
       for (j of l)
-        r[j] += damping*ranks[i]/d;
+        r[j] += _damping*ranks[i]/d;
     }
     var e = 0;
     for (var i=0; i<n; i++)
